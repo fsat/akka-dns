@@ -49,6 +49,10 @@ class AsyncDnsResolver(cache: SimpleDnsCache, config: Config) extends Actor with
   else
     log.warning("No DNS resolvers can be determined, either because of malformed configuration or perhaps an invalid /etc/resolv.conf if that's being used. Do not expect DNS names to be resolved.")
 
+
+  log.warning(s"AKKA-DNS: systemNameServers ${systemNameServers}")
+  log.warning(s"AKKA-DNS: resolveSrv ${resolveSrv}")
+
   private def nextId(): Short = {
     requestId = (requestId + 2).toShort
     requestId
